@@ -170,7 +170,7 @@ export interface MethodOptionsWithSpec extends apigateway.MethodOptions {
    * Method responses augmented with properties necessary for the OpenAPI
    * definition.
    */
-  methodResponses?: MethodResponseWithSpec[],
+  methodResponses?: MethodResponseWithSpec[];
 }
 
 /**
@@ -233,7 +233,9 @@ export class ParameterKey {
    *   If `key` is not a valid parameter key.
    */
   static parseParameterKey(key: string): ParameterKey {
-    const match = key.match(/^method\.(request|response)\.(path|querystring|multivaluequerystring|header|multivalueheader)\.(.+)/);
+    const match = key.match(
+      /^method\.(request|response)\.(path|querystring|multivaluequerystring|header|multivalueheader)\.(.+)/,
+    );
     if (match == null) {
       throw new RangeError(`invalid request or response parameter key: ${key}`);
     }
@@ -248,7 +250,8 @@ export class ParameterKey {
       ) {
         throw new RangeError(
           'querystring or multivaluequerystring is not acceptable' +
-          ` as a response parameter key: ${key}`);
+            ` as a response parameter key: ${key}`,
+        );
       }
     }
     const explode =

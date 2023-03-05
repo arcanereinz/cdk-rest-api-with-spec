@@ -89,7 +89,7 @@ export interface JsonSchemaEx extends apigateway.JsonSchema {
    * {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#propertynames | propertyNames}.
    */
   propertyNames?: JsonSchemaEx;
-};
+}
 
 /** Non-recursive properties of JsonSchemaEx. */
 const NON_RECURSIVE_PROPERTIES = [
@@ -124,10 +124,7 @@ type NonRecursiveProperty = typeof NON_RECURSIVE_PROPERTIES[number];
  *
  * → `JsonSchema`
  */
-const SINGLE_SCHEMA_PROPERTIES = [
-  'not',
-  'propertyNames',
-] as const;
+const SINGLE_SCHEMA_PROPERTIES = ['not', 'propertyNames'] as const;
 type SingleSchemaProperty = typeof SINGLE_SCHEMA_PROPERTIES[number];
 
 /**
@@ -148,10 +145,7 @@ type ArraySchemaProperty = typeof ARRAY_SCHEMA_PROPERTIES[number];
  *
  * → `JsonSchema | JsonSchema[]`
  */
-const ONE_OR_MORE_SCHEMA_PROPERTIES = [
-  'contains',
-  'items',
-] as const;
+const ONE_OR_MORE_SCHEMA_PROPERTIES = ['contains', 'items'] as const;
 type OneOrMoreSchemaProperty = typeof ONE_OR_MORE_SCHEMA_PROPERTIES[number];
 
 /**
@@ -207,17 +201,14 @@ export function translateJsonSchemaEx(
       restApi: apigateway.IRestApi,
       value: Exclude<JsonSchemaEx[P], undefined>,
     ) => {
-      gatewayValue: Exclude<apigateway.JsonSchema[P], undefined>,
-      openapiValue: Exclude<JsonSchemaEx[P], undefined>,
+      gatewayValue: Exclude<apigateway.JsonSchema[P], undefined>;
+      openapiValue: Exclude<JsonSchemaEx[P], undefined>;
     },
   ) {
     if (Object.prototype.hasOwnProperty.call(schema, prop)) {
       const value = schema[prop];
       if (value != null) {
-        const {
-          gatewayValue,
-          openapiValue,
-        } = translate(restApi, value);
+        const { gatewayValue, openapiValue } = translate(restApi, value);
         gatewaySchema = {
           ...gatewaySchema,
           [prop]: gatewayValue,
@@ -273,8 +264,7 @@ export function translateJsonSchemaEx(
   // - definitions: { [k: string]: JsonSchemaEx | string[] }
   translateProperty('dependencies', (_, map) => {
     const gatewayValue: { [k: string]: apigateway.JsonSchema | string[] } = {};
-    const openapiValue: { [k: string]: JsonSchemaEx | string[] } =
-      {};
+    const openapiValue: { [k: string]: JsonSchemaEx | string[] } = {};
     for (const key in map) {
       const value = map[key];
       if (Array.isArray(value)) {
@@ -330,13 +320,11 @@ function translateSingleSchemaProperty(
   restApi: apigateway.IRestApi,
   value: JsonSchemaEx,
 ): {
-  gatewayValue: apigateway.JsonSchema,
-  openapiValue: JsonSchemaEx,
+  gatewayValue: apigateway.JsonSchema;
+  openapiValue: JsonSchemaEx;
 } {
-  const {
-    gatewaySchema: gatewayValue,
-    openapiSchema: openapiValue,
-  } = translateJsonSchemaEx(restApi, value);
+  const { gatewaySchema: gatewayValue, openapiSchema: openapiValue } =
+    translateJsonSchemaEx(restApi, value);
   return {
     gatewayValue,
     openapiValue,
@@ -348,15 +336,15 @@ function translateArraySchemaProperty(
   restApi: apigateway.IRestApi,
   values: JsonSchemaEx[],
 ): {
-  gatewayValue: apigateway.JsonSchema[],
-  openapiValue: JsonSchemaEx[],
+  gatewayValue: apigateway.JsonSchema[];
+  openapiValue: JsonSchemaEx[];
 } {
   return values.reduce(
     (accum, value) => {
-      const {
-        gatewaySchema,
-        openapiSchema,
-      } = translateJsonSchemaEx(restApi, value);
+      const { gatewaySchema, openapiSchema } = translateJsonSchemaEx(
+        restApi,
+        value,
+      );
       accum.gatewayValue.push(gatewaySchema);
       accum.openapiValue.push(openapiSchema);
       return accum;
@@ -373,8 +361,8 @@ function translateOneOrMoreSchemaProperty(
   restApi: apigateway.IRestApi,
   values: JsonSchemaEx | JsonSchemaEx[],
 ): {
-  gatewayValue: apigateway.JsonSchema | apigateway.JsonSchema[],
-  openapiValue: JsonSchemaEx | JsonSchemaEx[],
+  gatewayValue: apigateway.JsonSchema | apigateway.JsonSchema[];
+  openapiValue: JsonSchemaEx | JsonSchemaEx[];
 } {
   if (Array.isArray(values)) {
     // JsonSchemaEx[]
@@ -389,16 +377,16 @@ function translateMapSchemaProperty(
   restApi: apigateway.IRestApi,
   map: { [k: string]: JsonSchemaEx },
 ): {
-  gatewayValue: { [k: string]: apigateway.JsonSchema },
-  openapiValue: { [k: string]: JsonSchemaEx },
+  gatewayValue: { [k: string]: apigateway.JsonSchema };
+  openapiValue: { [k: string]: JsonSchemaEx };
 } {
   const gatewayValue: { [k: string]: apigateway.JsonSchema } = {};
   const openapiValue: { [k: string]: JsonSchemaEx } = {};
   for (const key in map) {
-    const {
-      gatewaySchema,
-      openapiSchema,
-    } = translateJsonSchemaEx(restApi, map[key]);
+    const { gatewaySchema, openapiSchema } = translateJsonSchemaEx(
+      restApi,
+      map[key],
+    );
     gatewayValue[key] = gatewaySchema;
     openapiValue[key] = openapiSchema;
   }
