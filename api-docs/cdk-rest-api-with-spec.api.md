@@ -19,6 +19,12 @@ export interface IAuthorizerWithSpec extends aws_apigateway.IAuthorizer {
     securitySchemeObject?: SecuritySchemeObject;
 }
 
+// @public
+export interface IBuildOptions {
+    // (undocumented)
+    usePhysicalName?: boolean;
+}
+
 // @beta
 export interface IResourceWithSpec extends aws_apigateway.Resource {
     addMethod(httpMethod: string, target?: aws_apigateway.Integration, options?: MethodOptionsWithSpec): aws_apigateway.Method;
@@ -30,6 +36,7 @@ export interface IResourceWithSpec extends aws_apigateway.Resource {
 // @beta
 export interface IRestApiWithSpec extends aws_apigateway.IRestApi {
     addModel(id: string, props: ModelOptionsWithSpec): aws_apigateway.Model;
+    readonly buildOptions?: IBuildOptions;
     readonly root: IResourceWithSpec;
 }
 
@@ -104,6 +111,7 @@ export interface ResourceOptionsWithSpec extends aws_apigateway.ResourceOptions 
 export class RestApiWithSpec extends aws_apigateway.RestApi implements IRestApiWithSpec {
     constructor(scope: Construct, id: string, props: RestApiWithSpecProps);
     addModel(id: string, props: ModelOptionsWithSpec): aws_apigateway.Model;
+    readonly buildOptions?: IBuildOptions;
     // (undocumented)
     readonly props: RestApiWithSpecProps;
     readonly root: IResourceWithSpec;
@@ -111,6 +119,7 @@ export class RestApiWithSpec extends aws_apigateway.RestApi implements IRestApiW
 
 // @beta
 export interface RestApiWithSpecProps extends aws_apigateway.RestApiProps {
+    buildOptions?: IBuildOptions;
     openApiInfo: Partial<InfoObject> & Pick<InfoObject, 'version'>;
     openApiOutputPath: string;
     servers?: ServerObject[];

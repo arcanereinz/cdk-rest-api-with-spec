@@ -304,6 +304,50 @@
         },
         {
           "kind": "Interface",
+          "canonicalReference": "cdk-rest-api-with-spec!IBuildOptions:interface",
+          "docComment": "/**\n * Set options that controls how OpenAPI doc is generated\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IBuildOptions "
+            }
+          ],
+          "releaseTag": "Public",
+          "name": "IBuildOptions",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!IBuildOptions#usePhysicalName:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "usePhysicalName?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "usePhysicalName",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
           "canonicalReference": "cdk-rest-api-with-spec!IResourceWithSpec:interface",
           "docComment": "/**\n * {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.IResource.html | aws_apigateway.IResource} augmented with the features to build the OpenAPI definition.\n *\n * @remarks\n *\n * Although this interface actually inherits {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.Resource.html | aws_apigateway.Resource}, you should rely on only properties defined in {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.IResource.html | aws_apigateway.IResource}.\n *\n * @beta\n */\n",
           "excerptTokens": [
@@ -637,6 +681,34 @@
                 }
               ],
               "name": "addModel"
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!IRestApiWithSpec#buildOptions:member",
+              "docComment": "/**\n * Set options that controls how OpenAPI doc is generated\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly buildOptions?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IBuildOptions",
+                  "canonicalReference": "cdk-rest-api-with-spec!IBuildOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "buildOptions",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
             },
             {
               "kind": "PropertySignature",
@@ -2021,6 +2093,36 @@
             },
             {
               "kind": "Property",
+              "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpec#buildOptions:member",
+              "docComment": "/**\n * Set options that controls how OpenAPI doc is generated\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly buildOptions?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IBuildOptions",
+                  "canonicalReference": "cdk-rest-api-with-spec!IBuildOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "buildOptions",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false
+            },
+            {
+              "kind": "Property",
               "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpec#props:member",
               "docComment": "",
               "excerptTokens": [
@@ -2118,6 +2220,34 @@
           "name": "RestApiWithSpecProps",
           "preserveMemberOrder": false,
           "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpecProps#buildOptions:member",
+              "docComment": "/**\n * Controls how the OpenAPI doc is generated\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "buildOptions?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IBuildOptions",
+                  "canonicalReference": "cdk-rest-api-with-spec!IBuildOptions:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "buildOptions",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
             {
               "kind": "PropertySignature",
               "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpecProps#openApiInfo:member",
