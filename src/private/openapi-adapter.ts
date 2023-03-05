@@ -1,4 +1,4 @@
-import { Stack, aws_apigateway as apigateway } from 'aws-cdk-lib';
+import { aws_apigateway as apigateway, Stack } from 'aws-cdk-lib';
 import {
   ContentObject,
   ReferenceObject,
@@ -110,12 +110,12 @@ export function jsonSchemaToSchemaObject(
   }
   if (ref != null) {
     // ignores other properties and returns a ReferenceObject
-    const otherProps = Object.keys(schema).filter(key => key != 'ref');
+    const otherProps = Object.keys(schema).filter((key) => key != 'ref');
     if (otherProps.length > 0) {
       warn('other properties than ref are ignored', otherProps);
     }
     return {
-      '$ref': ref,
+      $ref: ref,
     };
   }
   return {
@@ -201,8 +201,7 @@ function mapType(
   | 'object'
   | 'null'
   | 'array'
-  | undefined
-{
+  | undefined {
   if (type == null) {
     return undefined;
   }
@@ -287,12 +286,21 @@ function modelMapToContentObject(
   const content: ContentObject = {};
   for (const contentType in modelMap) {
     const model = modelMap[contentType];
-    content[contentType] = {
-      schema: {
-        '$ref':
-          `#/components/schemas/${resolveResourceId(stack, model.modelId)}`,
-      },
-    };
+    try {
+      content[contentType] = {
+        schema: {
+          $ref: `#/components/schemas/${resolveResourceId(
+            stack,
+            model.modelId,
+          )}`,
+        },
+      };
+    } catch (exception) {
+      // ignore error and return empty schema
+      content[contentType] = {
+        schema: {},
+      };
+    }
   }
   return content;
 }

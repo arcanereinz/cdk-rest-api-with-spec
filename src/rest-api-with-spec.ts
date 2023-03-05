@@ -8,6 +8,7 @@ import {
   OperationObject,
   ParameterObject,
   SchemaObject,
+  ServerObject,
 } from 'openapi3-ts';
 
 import { translateJsonSchemaEx } from './json-schema-ex';
@@ -41,20 +42,25 @@ export interface RestApiWithSpecProps extends apigateway.RestApiProps {
    * in the OpenAPI definition.
    */
   openApiInfo: Partial<InfoObject> & Pick<InfoObject, 'version'>;
-    // more straightforward form `Omit<InfoObject, 'title'> & {title?: string}`
-    // does not work. it makes `version: any`.
-    //
-    // here is my reasoning,
-    // 1. `Omit` is defined as `Omit<T, K> = Pick<T, Exclude<keyof T, K>>`
-    // 2. `InfoObject` extends `ISpecificationExtension`
-    // 3. `ISpecificationExtension` has `[extensionName: string]: any`
-    // 4. (my guess) most inclusive `string` wins `keyof T` binding
-    // 5. (my guess) `Exclude` leaves `string` because it does not extend
-    //    "title"
-    // 6. (my guess) `Pick` selects properties accessible with `string`; i.e.,
-    //    every property falls to `any`
+  // more straightforward form `Omit<InfoObject, 'title'> & {title?: string}`
+  // does not work. it makes `version: any`.
+  //
+  // here is my reasoning,
+  // 1. `Omit` is defined as `Omit<T, K> = Pick<T, Exclude<keyof T, K>>`
+  // 2. `InfoObject` extends `ISpecificationExtension`
+  // 3. `ISpecificationExtension` has `[extensionName: string]: any`
+  // 4. (my guess) most inclusive `string` wins `keyof T` binding
+  // 5. (my guess) `Exclude` leaves `string` because it does not extend
+  //    "title"
+  // 6. (my guess) `Pick` selects properties accessible with `string`; i.e.,
+  //    every property falls to `any`
   /** Path to an output file where the OpenAPI definition is to be saved. */
   openApiOutputPath: string;
+  /**
+   * List of servers for use with swagger/openapi editor
+   * @see https://editor.swagger.io/
+   */
+  servers?: ServerObject[];
 }
 
 /**
@@ -71,7 +77,10 @@ export interface RestApiWithSpecProps extends apigateway.RestApiProps {
  *
  * @beta
  */
-export class RestApiWithSpec extends apigateway.RestApi implements IRestApiWithSpec {
+export class RestApiWithSpec
+  extends apigateway.RestApi
+  implements IRestApiWithSpec
+{
   /** builder of the OpenAPI definition. */
   private builder: OpenApiBuilder;
   /** Root resource with the OpenAPI definition. */
@@ -85,7 +94,7 @@ export class RestApiWithSpec extends apigateway.RestApi implements IRestApiWithS
   ) {
     super(scope, id, props);
     this.builder = new OpenApiBuilder({
-      openapi: '3.1.0',
+      openapi: '3.0.3',
       info: {
         title: this.restApiName,
         description: props.description,
@@ -98,6 +107,7 @@ export class RestApiWithSpec extends apigateway.RestApi implements IRestApiWithS
         schemas: {},
         securitySchemes: {},
       },
+      servers: props.servers,
     });
     // augments and overrides `root`
     this.root = ResourceWithSpec.augmentResource(this.builder, this, this.root);
@@ -113,10 +123,7 @@ export class RestApiWithSpec extends apigateway.RestApi implements IRestApiWithS
    */
   addModel(id: string, props: ModelOptionsWithSpec): apigateway.Model {
     // translates the schema
-    const {
-      modelOptions,
-      schema,
-    } = translateModelOptionsWithSpec(this, props);
+    const { modelOptions, schema } = translateModelOptionsWithSpec(this, props);
     const model = super.addModel(id, modelOptions);
     const modelId = resolveResourceId(Stack.of(this), model.modelId);
     // registers the model as a schema component
@@ -149,13 +156,13 @@ function translateModelOptionsWithSpec(
   restApi: apigateway.IRestApi,
   options: ModelOptionsWithSpec,
 ): {
-  modelOptions: apigateway.ModelOptions,
-  schema: SchemaObject,
+  modelOptions: apigateway.ModelOptions;
+  schema: SchemaObject;
 } {
-  const {
-    gatewaySchema,
-    openapiSchema,
-  } = translateJsonSchemaEx(restApi, options.schema);
+  const { gatewaySchema, openapiSchema } = translateJsonSchemaEx(
+    restApi,
+    options.schema,
+  );
   return {
     modelOptions: {
       ...options,
@@ -240,9 +247,9 @@ class ResourceWithSpec {
     const defaultParameters = translatePathPart(wrapper.facade);
     // 2. overrides the default path parameter with parameters defined in
     //    defaultMethodOptions
-    const {
-      parameters,
-    } = translateRequestParameters(wrapper.facade.defaultMethodOptions);
+    const { parameters } = translateRequestParameters(
+      wrapper.facade.defaultMethodOptions,
+    );
     builder.addPath(resource.path, {
       // TODO: does anyone want to set the following properties per resource?
       // - summary
@@ -274,29 +281,30 @@ class ResourceWithSpec {
    */
   private getAddMethod(): IResourceWithSpec['addMethod'] {
     return (httpMethod, target, options) => {
-      const {
-        methodOptions,
-        parameters,
-      } = translateRequestParameters(options);
+      const { methodOptions, parameters } = translateRequestParameters(options);
       const method = this.resource.addMethod(httpMethod, target, methodOptions);
       const path = this.resource.path;
       const pathItem = this.builder.rootDoc.paths[path];
-      const requestBody = options?.requestModels != null
-        ? requestModelsToRequestBody(this.restApi, options.requestModels)
-        : undefined;
-      const responses = options?.methodResponses != null
-        ? methodResponsesToResponses(this.restApi, options.methodResponses)
-        : undefined;
+      const requestBody =
+        options?.requestModels != null
+          ? requestModelsToRequestBody(this.restApi, options.requestModels)
+          : undefined;
+      const responses =
+        options?.methodResponses != null
+          ? methodResponsesToResponses(this.restApi, options.methodResponses)
+          : undefined;
       const authorizer = options?.authorizer;
       let security: OperationObject['security'] = undefined;
       if (authorizer?.securitySchemeObject != null) {
-        const authorizerId =
-          resolveResourceId(Stack.of(this.restApi), authorizer.authorizerId);
+        const authorizerId = resolveResourceId(
+          Stack.of(this.restApi),
+          authorizer.authorizerId,
+        );
         this.builder.addSecurityScheme(
           authorizerId,
           authorizer.securitySchemeObject,
         ); // this overwrites the security scheme every time the authorizer is
-           // referenced in a MethodOptions but should not matter
+        // referenced in a MethodOptions but should not matter
         security = [
           {
             [authorizerId]: [],
@@ -393,19 +401,14 @@ function translatePathPart(
  *
  * @private
  */
-function translateRequestParameters(
-  options?: MethodOptionsWithSpec,
-): {
-  methodOptions?: apigateway.MethodOptions,
-  parameters?: ParameterObject[],
+function translateRequestParameters(options?: MethodOptionsWithSpec): {
+  methodOptions?: apigateway.MethodOptions;
+  parameters?: ParameterObject[];
 } {
   if (options == null) {
     return {};
   }
-  const {
-    requestParameters,
-    requestParameterSchemas,
-  } = options;
+  const { requestParameters, requestParameterSchemas } = options;
   if (requestParameters == null && requestParameterSchemas == null) {
     return { methodOptions: options };
   }
@@ -418,8 +421,8 @@ function translateRequestParameters(
       const parsedKey = ParameterKey.parseParameterKey(key);
       if (parsedKey.explode) {
         throw new RangeError(
-          "multivaluequerystring and multivalueheader are not allowed" +
-          ` in RequestParameters of MethodOptions: ${key}`,
+          'multivaluequerystring and multivalueheader are not allowed' +
+            ` in RequestParameters of MethodOptions: ${key}`,
         );
       }
       const required = requestParameters[key];
@@ -439,8 +442,8 @@ function translateRequestParameters(
       const parsedKey = ParameterKey.parseParameterKey(key);
       if (parsedKey.explode) {
         throw new RangeError(
-          "multivaluequerystring and multivalueheader are not allowed" +
-          ` in RequestParameters of MethodOptions: ${key}`,
+          'multivaluequerystring and multivalueheader are not allowed' +
+            ` in RequestParameters of MethodOptions: ${key}`,
         );
       }
       const baseParameter = requestParameterSchemas[key];
@@ -449,7 +452,7 @@ function translateRequestParameters(
         name: parsedKey.name,
         in: parsedKey.location,
       };
-      const index = parameters.findIndex(p => p.name === parameter.name);
+      const index = parameters.findIndex((p) => p.name === parameter.name);
       if (index !== -1) {
         console.warn(
           'translateRequestParameters',
@@ -497,7 +500,7 @@ function mergeParameterObjects(
   // overwrites `baseParameters` with `parameters`
   const mergedParameters = [...baseParameters];
   for (const parameter of parameters) {
-    const index = mergedParameters.findIndex(p => p.name === parameter.name);
+    const index = mergedParameters.findIndex((p) => p.name === parameter.name);
     if (index !== -1) {
       mergedParameters[index] = parameter;
     } else {

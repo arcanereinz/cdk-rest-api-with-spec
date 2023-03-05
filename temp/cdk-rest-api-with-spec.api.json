@@ -1,0 +1,2250 @@
+{
+  "metadata": {
+    "toolPackage": "@microsoft/api-extractor",
+    "toolVersion": "7.28.3",
+    "schemaVersion": 1009,
+    "oldestForwardsCompatibleVersion": 1001,
+    "tsdocConfig": {
+      "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+      "noStandardTags": true,
+      "tagDefinitions": [
+        {
+          "tagName": "@alpha",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@beta",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@defaultValue",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@decorator",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@deprecated",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@eventProperty",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@example",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@experimental",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@inheritDoc",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@internal",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@label",
+          "syntaxKind": "inline"
+        },
+        {
+          "tagName": "@link",
+          "syntaxKind": "inline",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@override",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@packageDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@param",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@privateRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@public",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@readonly",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@remarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@returns",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@sealed",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@see",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@throws",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@typeParam",
+          "syntaxKind": "block",
+          "allowMultiple": true
+        },
+        {
+          "tagName": "@virtual",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@betaDocumentation",
+          "syntaxKind": "modifier"
+        },
+        {
+          "tagName": "@internalRemarks",
+          "syntaxKind": "block"
+        },
+        {
+          "tagName": "@preapproved",
+          "syntaxKind": "modifier"
+        }
+      ],
+      "supportForTags": {
+        "@alpha": true,
+        "@beta": true,
+        "@defaultValue": true,
+        "@decorator": true,
+        "@deprecated": true,
+        "@eventProperty": true,
+        "@example": true,
+        "@experimental": true,
+        "@inheritDoc": true,
+        "@internal": true,
+        "@label": true,
+        "@link": true,
+        "@override": true,
+        "@packageDocumentation": true,
+        "@param": true,
+        "@privateRemarks": true,
+        "@public": true,
+        "@readonly": true,
+        "@remarks": true,
+        "@returns": true,
+        "@sealed": true,
+        "@see": true,
+        "@throws": true,
+        "@typeParam": true,
+        "@virtual": true,
+        "@betaDocumentation": true,
+        "@internalRemarks": true,
+        "@preapproved": true
+      },
+      "reportUnsupportedHtmlElements": false
+    }
+  },
+  "kind": "Package",
+  "canonicalReference": "cdk-rest-api-with-spec!",
+  "docComment": "/**\n * Describe the Amazon API Gateway and OpenAPI definition at once with CDK.\n *\n * @packageDocumentation\n */\n",
+  "name": "cdk-rest-api-with-spec",
+  "preserveMemberOrder": false,
+  "members": [
+    {
+      "kind": "EntryPoint",
+      "canonicalReference": "cdk-rest-api-with-spec!",
+      "name": "",
+      "preserveMemberOrder": false,
+      "members": [
+        {
+          "kind": "Function",
+          "canonicalReference": "cdk-rest-api-with-spec!augmentAuthorizer:function(1)",
+          "docComment": "/**\n * Makes a given {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.IAuthorizer.html | aws_apigateway.IAuthorizer} an {@link IAuthorizerWithSpec} by augmenting it with a specified security scheme object.\n *\n * @param authorizer - Authorizer to be augmented.\n *\n * @param securitySchemeObject - Security scheme object to add to `authorizer`.\n *\n * @returns `authorizer` with `securitySchemeObject`.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare function augmentAuthorizer(authorizer: "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "IAuthorizer",
+              "canonicalReference": "aws-cdk-lib!IAuthorizer:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ", securitySchemeObject: "
+            },
+            {
+              "kind": "Reference",
+              "text": "SecuritySchemeObject",
+              "canonicalReference": "openapi3-ts!SecuritySchemeObject:interface"
+            },
+            {
+              "kind": "Content",
+              "text": "): "
+            },
+            {
+              "kind": "Reference",
+              "text": "IAuthorizerWithSpec",
+              "canonicalReference": "cdk-rest-api-with-spec!IAuthorizerWithSpec:interface"
+            },
+            {
+              "kind": "Content",
+              "text": ";"
+            }
+          ],
+          "returnTypeTokenRange": {
+            "startIndex": 6,
+            "endIndex": 7
+          },
+          "releaseTag": "Beta",
+          "overloadIndex": 1,
+          "parameters": [
+            {
+              "parameterName": "authorizer",
+              "parameterTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              },
+              "isOptional": false
+            },
+            {
+              "parameterName": "securitySchemeObject",
+              "parameterTypeTokenRange": {
+                "startIndex": 4,
+                "endIndex": 5
+              },
+              "isOptional": false
+            }
+          ],
+          "name": "augmentAuthorizer"
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cdk-rest-api-with-spec!IAuthorizerWithSpec:interface",
+          "docComment": "/**\n * Authorizer augmented with the features to describe the OpenAPI definition.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IAuthorizerWithSpec extends "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "IAuthorizer",
+              "canonicalReference": "aws-cdk-lib!IAuthorizer:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "IAuthorizerWithSpec",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!IAuthorizerWithSpec#securitySchemeObject:member",
+              "docComment": "/**\n * Security scheme object representing this authorizer.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "securitySchemeObject?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "SecuritySchemeObject",
+                  "canonicalReference": "openapi3-ts!SecuritySchemeObject:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "securitySchemeObject",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cdk-rest-api-with-spec!IResourceWithSpec:interface",
+          "docComment": "/**\n * {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.IResource.html | aws_apigateway.IResource} augmented with the features to build the OpenAPI definition.\n *\n * @remarks\n *\n * Although this interface actually inherits {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.Resource.html | aws_apigateway.Resource}, you should rely on only properties defined in {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.IResource.html | aws_apigateway.IResource}.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IResourceWithSpec extends "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "Resource",
+              "canonicalReference": "aws-cdk-lib!Resource:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "IResourceWithSpec",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "cdk-rest-api-with-spec!IResourceWithSpec#addMethod:member(1)",
+              "docComment": "/**\n * Adds a method with the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addMethod(httpMethod: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", target?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "apigateway."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Integration",
+                  "canonicalReference": "aws-cdk-lib!Integration:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "MethodOptionsWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!MethodOptionsWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "apigateway."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Method",
+                  "canonicalReference": "aws-cdk-lib!Method:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "returnTypeTokenRange": {
+                "startIndex": 8,
+                "endIndex": 10
+              },
+              "releaseTag": "Beta",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "httpMethod",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "target",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 5
+                  },
+                  "isOptional": true
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 6,
+                    "endIndex": 7
+                  },
+                  "isOptional": true
+                }
+              ],
+              "name": "addMethod"
+            },
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "cdk-rest-api-with-spec!IResourceWithSpec#addResource:member(1)",
+              "docComment": "/**\n * Adds a new child resource with the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addResource(pathPart: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", options?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ResourceOptionsWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!ResourceOptionsWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IResourceWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!IResourceWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 6
+              },
+              "releaseTag": "Beta",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "pathPart",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "options",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": true
+                }
+              ],
+              "name": "addResource"
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!IResourceWithSpec#defaultMethodOptions:member",
+              "docComment": "/**\n * Default method options with the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "defaultMethodOptions?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "MethodOptionsWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!MethodOptionsWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "defaultMethodOptions",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!IResourceWithSpec#parentResource:member",
+              "docComment": "/**\n * Parent resource.\n *\n * @remarks\n *\n * `undefined` if this resource is the root.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "parentResource?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IResourceWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!IResourceWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "parentResource",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cdk-rest-api-with-spec!IRestApiWithSpec:interface",
+          "docComment": "/**\n * {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.RestApi.html | aws_apigateway.RestApi} augmented with the features to build the OpenAPI definition.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface IRestApiWithSpec extends "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "IRestApi",
+              "canonicalReference": "aws-cdk-lib!IRestApi:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "IRestApiWithSpec",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "MethodSignature",
+              "canonicalReference": "cdk-rest-api-with-spec!IRestApiWithSpec#addModel:member(1)",
+              "docComment": "/**\n * Adds a new model.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addModel(id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", props: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ModelOptionsWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!ModelOptionsWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "apigateway."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Model",
+                  "canonicalReference": "aws-cdk-lib!Model:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isOptional": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              },
+              "releaseTag": "Beta",
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "props",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "name": "addModel"
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!IRestApiWithSpec#root:member",
+              "docComment": "/**\n * Root resource ('/') with the features to build the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly root: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IResourceWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!IResourceWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "root",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface",
+          "docComment": "/**\n * Extended {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html | aws_apigateway.JsonSchema}.\n *\n * @remarks\n *\n * Introduces the following new properties,\n * ```\n * - example: example value.\n * - modelRef: reference to another IModel.\n * ```\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface JsonSchemaEx extends "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "JsonSchema",
+              "canonicalReference": "aws-cdk-lib!JsonSchema:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "JsonSchemaEx",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#additionalItems:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#additionalitems | additionalItems}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "additionalItems?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "additionalItems",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#additionalProperties:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#additionalproperties | additionalProperties}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "additionalProperties?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "additionalProperties",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#allOf:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#allof | allOf}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "allOf?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "allOf",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#anyOf:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#anyof | anyOf}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "anyOf?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "anyOf",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#contains:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#contains | contains}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "contains?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "contains",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#definitions:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#definitions | definitions}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "definitions?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        [k: string]: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "definitions",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#dependencies:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#dependencies | dependencies}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "dependencies?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        [k: string]: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | string[];\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "dependencies",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#example:member",
+              "docComment": "/**\n * Example value.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "example?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "any"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "example",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#items:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#items | items}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "items?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": " | "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "items",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 5
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#modelRef:member",
+              "docComment": "/**\n * Reference to another {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.IModel.html | aws_apigateway.IModel}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "modelRef?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "apigateway."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IModel",
+                  "canonicalReference": "aws-cdk-lib!IModel:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "modelRef",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#not:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#not | not}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "not?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "not",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#oneOf:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#oneof | oneOf}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "oneOf?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "oneOf",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#patternProperties:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#patternproperties | patternProperties}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "patternProperties?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        [k: string]: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "patternProperties",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#properties:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#properties-1 | properties}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "properties?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        [k: string]: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "properties",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx#propertyNames:member",
+              "docComment": "/**\n * Extension of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html#propertynames | propertyNames}.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "propertyNames?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "propertyNames",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cdk-rest-api-with-spec!MethodOptionsWithSpec:interface",
+          "docComment": "/**\n * {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.MethodOptions.html | aws_apigateway.MethodOptions} augmented with the properties necessary to build the OpenAPI definition.\n *\n * @remarks\n *\n * {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.MethodOptions.html#operationname | operationName} corresponds to {@link https://spec.openapis.org/oas/latest.html#operation-object | paths[path][method].operationId} in the OpenAPI definition.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface MethodOptionsWithSpec extends "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "MethodOptions",
+              "canonicalReference": "aws-cdk-lib!MethodOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "MethodOptionsWithSpec",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!MethodOptionsWithSpec#authorizer:member",
+              "docComment": "/**\n * Authorizer augmented with the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "authorizer?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IAuthorizerWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!IAuthorizerWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "authorizer",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!MethodOptionsWithSpec#description:member",
+              "docComment": "/**\n * Description of the method.\n *\n * @remarks\n *\n * Corresponds to {@link https://spec.openapis.org/oas/latest.html#operation-object | paths[path][method].description} in the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "description?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "description",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!MethodOptionsWithSpec#methodResponses:member",
+              "docComment": "/**\n * Method responses augmented with properties necessary for the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "methodResponses?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "MethodResponseWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!MethodResponseWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "methodResponses",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!MethodOptionsWithSpec#requestParameterSchemas:member",
+              "docComment": "/**\n * Request parameters which maps parameter objects for the OpenAPI definition instead of boolean values.\n *\n * @remarks\n *\n * Corresponds to {@link https://spec.openapis.org/oas/latest.html#operation-object | paths[path][method].parameters} in the OpenAPI definition.\n *\n * Possible keys are the same as those of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.MethodOptions.html#requestparameters | requestParameters}; i.e., in one of the following forms,\n * ```\n * - method.request.path.<parameter-name>\n * - method.request.querystring.<parameter-name>\n * - method.request.header.<parameter-name>\n * ```\n *\n * A key represents the following properties of the parameter object of the OpenAPI definition,\n * ```\n * - name = <parameter-name>\n * - in\n *   \"path\" for \"method.request.path.*\",\n *   \"query\" for \"method.request.querystirng.*\",\n *   \"header\" for \"method.request.header.*\".\n * ```\n *\n * Values of `required` properties are copied to corresponding boolean values of {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.MethodOptions.html#requestparameters | requestParameters}.\n *\n * If both {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.MethodOptions.html#requestparameters | requestParameters} and `requestParameterSchemas` are specified, `requestParameterSchemas` precedes.\n *\n * Please refer to {@link https://github.com/metadevpro/openapi3-ts | OpenApi3-TS} for more details about `BaseParameterObject`.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "requestParameterSchemas?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "{\n        [key: string]: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "BaseParameterObject",
+                  "canonicalReference": "openapi3-ts!BaseParameterObject:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";\n    }"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "requestParameterSchemas",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 4
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!MethodOptionsWithSpec#summary:member",
+              "docComment": "/**\n * Summary of the method.\n *\n * @remarks\n *\n * Corresponds to {@link https://spec.openapis.org/oas/latest.html#operation-object | paths[path][method].summary} in the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "summary?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "summary",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cdk-rest-api-with-spec!MethodResponseWithSpec:interface",
+          "docComment": "/**\n * {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.MethodResponse.html | aws_apigateway.MethodResponse} augmented with properties necessary for the OpenAPI definition.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface MethodResponseWithSpec extends "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "MethodResponse",
+              "canonicalReference": "aws-cdk-lib!MethodResponse:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "MethodResponseWithSpec",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!MethodResponseWithSpec#description:member",
+              "docComment": "/**\n * Description of the response.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "description?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "description",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cdk-rest-api-with-spec!ModelOptionsWithSpec:interface",
+          "docComment": "/**\n * {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.ModelOptions.html | aws_apigateway.ModelOptions} augmented with the properties necessary to build the OpenAPI definition.\n *\n * @remarks\n *\n * Has an extended `schema`.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ModelOptionsWithSpec extends "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "ModelOptions",
+              "canonicalReference": "aws-cdk-lib!ModelOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "ModelOptionsWithSpec",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!ModelOptionsWithSpec#schema:member",
+              "docComment": "/**\n * Extended schema definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "schema: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "JsonSchemaEx",
+                  "canonicalReference": "cdk-rest-api-with-spec!JsonSchemaEx:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "schema",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "cdk-rest-api-with-spec!ParameterKey:class",
+          "docComment": "/**\n * Parsed request or response parameter key.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class ParameterKey "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "ParameterKey",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "cdk-rest-api-with-spec!ParameterKey:constructor(1)",
+              "docComment": "/**\n * Constructs a new instance of the `ParameterKey` class\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(\n    direction: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'request' | 'response'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", \n    name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", \n    location: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'path' | 'query' | 'header'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", \n    explode: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Beta",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "direction",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "name",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "location",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 5,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "explode",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 7,
+                    "endIndex": 8
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cdk-rest-api-with-spec!ParameterKey#direction:member",
+              "docComment": "/**\n * Request or response.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly direction: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'request' | 'response'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "direction",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cdk-rest-api-with-spec!ParameterKey#explode:member",
+              "docComment": "/**\n * Whether the parameter can have multiple values.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly explode: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "explode",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cdk-rest-api-with-spec!ParameterKey#location:member",
+              "docComment": "/**\n * Location of the parameter.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly location: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "'path' | 'query' | 'header'"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "location",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cdk-rest-api-with-spec!ParameterKey#name:member",
+              "docComment": "/**\n * Name of the parameter.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly name: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "name",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "cdk-rest-api-with-spec!ParameterKey.parseParameterKey:member(1)",
+              "docComment": "/**\n * Parses a given request or response parameter key.\n *\n * @remarks\n *\n * A parameter key must have the following form,\n * ```\n * method.<direction>.<location>.<parameter-name>\n * ```\n *\n * `<direction>` must be either `request` or `response`.\n *\n * `<location>` must be one of the following,\n * ```\n * - \"path\"\n * - \"querystring\" (invalid if direction=response)\n * - \"multivaluequerystring\" (invalid direction=response)\n * - \"header\"\n * - \"multivalueheader\"\n * ```\n *\n * @param key - Parameter key to be parsed.\n *\n * @throws\n *\n * RangeError\n *\n * If `key` is not a valid parameter key.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "static parseParameterKey(key: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ParameterKey",
+                  "canonicalReference": "cdk-rest-api-with-spec!ParameterKey:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": true,
+              "returnTypeTokenRange": {
+                "startIndex": 3,
+                "endIndex": 4
+              },
+              "releaseTag": "Beta",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "key",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "name": "parseParameterKey"
+            }
+          ],
+          "implementsTokenRanges": []
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cdk-rest-api-with-spec!ResourceOptionsWithSpec:interface",
+          "docComment": "/**\n * {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.ResourceOptions.html | aws_apigateway.ResourceOptions} augmented with the properties necessary to build the OpenAPI definition.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface ResourceOptionsWithSpec extends "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "ResourceOptions",
+              "canonicalReference": "aws-cdk-lib!ResourceOptions:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "ResourceOptionsWithSpec",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!ResourceOptionsWithSpec#defaultMethodOptions:member",
+              "docComment": "/**\n * Default method options with the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "defaultMethodOptions?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "MethodOptionsWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!MethodOptionsWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "defaultMethodOptions",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        },
+        {
+          "kind": "Class",
+          "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpec:class",
+          "docComment": "/**\n * CDK construct that provisions an API Gateway REST API endpoint and also synthesizes the OpenAPI definition for it.\n *\n * @remarks\n *\n * NOTE: Please turn on the validation of CDK stacks. If you skip the validation of CDK stacks, this construct cannot synthesize the OpenAPI definition. Because this construct utilizes the validation as a trigger to start synthesis.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export declare class RestApiWithSpec extends "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "RestApi",
+              "canonicalReference": "aws-cdk-lib!RestApi:class"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            },
+            {
+              "kind": "Content",
+              "text": "implements "
+            },
+            {
+              "kind": "Reference",
+              "text": "IRestApiWithSpec",
+              "canonicalReference": "cdk-rest-api-with-spec!IRestApiWithSpec:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "RestApiWithSpec",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "Constructor",
+              "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpec:constructor(1)",
+              "docComment": "/**\n * Initializes a REST API with the OpenAPI specification.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "constructor(scope: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Construct",
+                  "canonicalReference": "constructs!Construct:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", props: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "RestApiWithSpecProps",
+                  "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpecProps:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ");"
+                }
+              ],
+              "releaseTag": "Beta",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "scope",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "props",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 5,
+                    "endIndex": 6
+                  },
+                  "isOptional": false
+                }
+              ]
+            },
+            {
+              "kind": "Method",
+              "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpec#addModel:member(1)",
+              "docComment": "/**\n * Returns the `addModel` function augmented with the features to build the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "addModel(id: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", props: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ModelOptionsWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!ModelOptionsWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "): "
+                },
+                {
+                  "kind": "Content",
+                  "text": "apigateway."
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Model",
+                  "canonicalReference": "aws-cdk-lib!Model:class"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isStatic": false,
+              "returnTypeTokenRange": {
+                "startIndex": 5,
+                "endIndex": 7
+              },
+              "releaseTag": "Beta",
+              "isProtected": false,
+              "overloadIndex": 1,
+              "parameters": [
+                {
+                  "parameterName": "id",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 1,
+                    "endIndex": 2
+                  },
+                  "isOptional": false
+                },
+                {
+                  "parameterName": "props",
+                  "parameterTypeTokenRange": {
+                    "startIndex": 3,
+                    "endIndex": 4
+                  },
+                  "isOptional": false
+                }
+              ],
+              "isOptional": false,
+              "name": "addModel"
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpec#props:member",
+              "docComment": "",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly props: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "RestApiWithSpecProps",
+                  "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpecProps:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "props",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false
+            },
+            {
+              "kind": "Property",
+              "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpec#root:member",
+              "docComment": "/**\n * Root resource with the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "readonly root: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "IResourceWithSpec",
+                  "canonicalReference": "cdk-rest-api-with-spec!IResourceWithSpec:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": true,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "root",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              },
+              "isStatic": false,
+              "isProtected": false
+            }
+          ],
+          "extendsTokenRange": {
+            "startIndex": 1,
+            "endIndex": 3
+          },
+          "implementsTokenRanges": [
+            {
+              "startIndex": 5,
+              "endIndex": 6
+            }
+          ]
+        },
+        {
+          "kind": "Interface",
+          "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpecProps:interface",
+          "docComment": "/**\n * Properties for {@link RestApiWithSpec}.\n *\n * @beta\n */\n",
+          "excerptTokens": [
+            {
+              "kind": "Content",
+              "text": "export interface RestApiWithSpecProps extends "
+            },
+            {
+              "kind": "Content",
+              "text": "apigateway."
+            },
+            {
+              "kind": "Reference",
+              "text": "RestApiProps",
+              "canonicalReference": "aws-cdk-lib!RestApiProps:interface"
+            },
+            {
+              "kind": "Content",
+              "text": " "
+            }
+          ],
+          "releaseTag": "Beta",
+          "name": "RestApiWithSpecProps",
+          "preserveMemberOrder": false,
+          "members": [
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpecProps#openApiInfo:member",
+              "docComment": "/**\n * Info object of the OpenAPI definition.\n *\n * @remarks\n *\n * Corresponds to {@link https://spec.openapis.org/oas/latest.html#info-object | info} in the OpenAPI definition.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "openApiInfo: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Partial",
+                  "canonicalReference": "!Partial:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InfoObject",
+                  "canonicalReference": "openapi3-ts!InfoObject:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "> & "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "Pick",
+                  "canonicalReference": "!Pick:type"
+                },
+                {
+                  "kind": "Content",
+                  "text": "<"
+                },
+                {
+                  "kind": "Reference",
+                  "text": "InfoObject",
+                  "canonicalReference": "openapi3-ts!InfoObject:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": ", 'version'>"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "openApiInfo",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 9
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpecProps#openApiOutputPath:member",
+              "docComment": "/**\n * Path to an output file where the OpenAPI definition is to be saved.\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "openApiOutputPath: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "string"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": false,
+              "releaseTag": "Beta",
+              "name": "openApiOutputPath",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!RestApiWithSpecProps#servers:member",
+              "docComment": "/**\n * List of servers for use with swagger/openapi editor\n *\n * @see\n *\n * https://editor.swagger.io/\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "servers?: "
+                },
+                {
+                  "kind": "Reference",
+                  "text": "ServerObject",
+                  "canonicalReference": "openapi3-ts!ServerObject:interface"
+                },
+                {
+                  "kind": "Content",
+                  "text": "[]"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Beta",
+              "name": "servers",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 3
+              }
+            }
+          ],
+          "extendsTokenRanges": [
+            {
+              "startIndex": 1,
+              "endIndex": 3
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
