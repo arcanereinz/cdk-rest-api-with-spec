@@ -8,7 +8,7 @@ import {
 } from 'openapi3-ts';
 
 import { JsonSchemaEx } from '../json-schema-ex';
-import { MethodResponseWithSpec } from '../models';
+import { IRestApiWithSpec, MethodResponseWithSpec } from '../models';
 import { resolveResourceId } from './utils';
 
 /**
@@ -242,11 +242,15 @@ function mapType(
  * @internal
  */
 export function requestModelsToRequestBody(
-  restApi: apigateway.IRestApi,
+  restApi: IRestApiWithSpec,
   requestModels: { [contentType: string]: apigateway.IModel },
 ): RequestBodyObject {
   return {
-    content: modelMapToContentObject(Stack.of(restApi), requestModels),
+    content: modelMapToContentObject(
+      Stack.of(restApi),
+      requestModels,
+      restApi.buildOptions?.usePhysicalName,
+    ),
   };
 }
 
@@ -261,7 +265,7 @@ export function requestModelsToRequestBody(
  * @internal
  */
 export function methodResponsesToResponses(
-  restApi: apigateway.IRestApi,
+  restApi: IRestApiWithSpec,
   methodResponses: MethodResponseWithSpec[],
 ): ResponsesObject {
   const stack = Stack.of(restApi);
@@ -270,7 +274,13 @@ export function methodResponsesToResponses(
     const { description, responseModels, statusCode } = response;
     responses[statusCode] = {
       description: description ?? `${statusCode} response`,
-      content: responseModels && modelMapToContentObject(stack, responseModels),
+      content:
+        responseModels &&
+        modelMapToContentObject(
+          stack,
+          responseModels,
+          restApi.buildOptions?.usePhysicalName,
+        ),
     };
   }
   return responses;
@@ -282,6 +292,7 @@ export function methodResponsesToResponses(
 function modelMapToContentObject(
   stack: Stack,
   modelMap: { [contentType: string]: apigateway.IModel },
+  usePhysicalName?: boolean,
 ): ContentObject {
   const content: ContentObject = {};
   for (const contentType in modelMap) {
@@ -289,10 +300,11 @@ function modelMapToContentObject(
     try {
       content[contentType] = {
         schema: {
-          $ref: `#/components/schemas/${resolveResourceId(
-            stack,
-            model.modelId,
-          )}`,
+          $ref: `#/components/schemas/${
+            usePhysicalName && 'physicalName' in model
+              ? (model as any as { physicalName: string }).physicalName
+              : resolveResourceId(stack, model.modelId)
+          }`,
         },
       };
     } catch (exception) {

@@ -1,4 +1,5 @@
 import { Fn, Stack, aws_apigateway as apigateway } from 'aws-cdk-lib';
+import { IRestApiWithSpec } from './models';
 
 import { resolveResourceId } from './private/utils';
 
@@ -187,7 +188,7 @@ export type TranslateJsonSchemaExOutput = {
  * @internal
  */
 export function translateJsonSchemaEx(
-  restApi: apigateway.IRestApi,
+  restApi: IRestApiWithSpec,
   schema: JsonSchemaEx,
 ): TranslateJsonSchemaExOutput {
   // copies properties to the following objects
@@ -198,7 +199,7 @@ export function translateJsonSchemaEx(
   function translateProperty<P extends keyof apigateway.JsonSchema>(
     prop: P,
     translate: (
-      restApi: apigateway.IRestApi,
+      restApi: IRestApiWithSpec,
       value: Exclude<JsonSchemaEx[P], undefined>,
     ) => {
       gatewayValue: Exclude<apigateway.JsonSchema[P], undefined>;
@@ -292,7 +293,10 @@ export function translateJsonSchemaEx(
   // resolves the modelRef
   if (schema.modelRef != null) {
     const model = schema.modelRef;
-    const modelId = resolveResourceId(Stack.of(restApi), model.modelId);
+    const modelId =
+      restApi.buildOptions?.usePhysicalName && 'physicalName' in model
+        ? (model as any as { physicalName: string }).physicalName
+        : resolveResourceId(Stack.of(restApi), model.modelId);
     if (schema.ref != null) {
       console.warn(
         'translateJsonSchemaEx',
@@ -317,7 +321,7 @@ export function translateJsonSchemaEx(
 
 /** Translates a single schema property. */
 function translateSingleSchemaProperty(
-  restApi: apigateway.IRestApi,
+  restApi: IRestApiWithSpec,
   value: JsonSchemaEx,
 ): {
   gatewayValue: apigateway.JsonSchema;
@@ -333,7 +337,7 @@ function translateSingleSchemaProperty(
 
 /** Translates an array schema property. */
 function translateArraySchemaProperty(
-  restApi: apigateway.IRestApi,
+  restApi: IRestApiWithSpec,
   values: JsonSchemaEx[],
 ): {
   gatewayValue: apigateway.JsonSchema[];
@@ -358,7 +362,7 @@ function translateArraySchemaProperty(
 
 /** Translates a one-or-more schema property. */
 function translateOneOrMoreSchemaProperty(
-  restApi: apigateway.IRestApi,
+  restApi: IRestApiWithSpec,
   values: JsonSchemaEx | JsonSchemaEx[],
 ): {
   gatewayValue: apigateway.JsonSchema | apigateway.JsonSchema[];
@@ -374,7 +378,7 @@ function translateOneOrMoreSchemaProperty(
 
 /** Translates a map schema property. */
 function translateMapSchemaProperty(
-  restApi: apigateway.IRestApi,
+  restApi: IRestApiWithSpec,
   map: { [k: string]: JsonSchemaEx },
 ): {
   gatewayValue: { [k: string]: apigateway.JsonSchema };

@@ -13,6 +13,7 @@ import {
 
 import { translateJsonSchemaEx } from './json-schema-ex';
 import {
+  IBuildOptions,
   IResourceWithSpec,
   IRestApiWithSpec,
   MethodOptionsWithSpec,
@@ -61,6 +62,10 @@ export interface RestApiWithSpecProps extends apigateway.RestApiProps {
    * @see https://editor.swagger.io/
    */
   servers?: ServerObject[];
+  /**
+   * Controls how the OpenAPI doc is generated
+   */
+  buildOptions?: IBuildOptions;
 }
 
 /**
@@ -85,6 +90,8 @@ export class RestApiWithSpec
   private builder: OpenApiBuilder;
   /** Root resource with the OpenAPI definition. */
   readonly root: IResourceWithSpec;
+  /** Set options that controls how OpenAPI doc is generated */
+  readonly buildOptions?: IBuildOptions;
 
   /** Initializes a REST API with the OpenAPI specification. */
   constructor(
@@ -109,6 +116,7 @@ export class RestApiWithSpec
       },
       servers: props.servers,
     });
+    this.buildOptions = props.buildOptions;
     // augments and overrides `root`
     this.root = ResourceWithSpec.augmentResource(this.builder, this, this.root);
     // synthesizes the OpenAPI definition at validation.
@@ -125,7 +133,10 @@ export class RestApiWithSpec
     // translates the schema
     const { modelOptions, schema } = translateModelOptionsWithSpec(this, props);
     const model = super.addModel(id, modelOptions);
-    const modelId = resolveResourceId(Stack.of(this), model.modelId);
+    const modelId =
+      this.buildOptions?.usePhysicalName && modelOptions.modelName
+        ? modelOptions.modelName
+        : resolveResourceId(Stack.of(this), model.modelId);
     // registers the model as a schema component
     this.builder.addSchema(modelId, schema);
     return model;
@@ -153,7 +164,7 @@ export class RestApiWithSpec
  * @private
  */
 function translateModelOptionsWithSpec(
-  restApi: apigateway.IRestApi,
+  restApi: IRestApiWithSpec,
   options: ModelOptionsWithSpec,
 ): {
   modelOptions: apigateway.ModelOptions;

@@ -6,6 +6,14 @@ import { IAuthorizerWithSpec } from './authorizer';
 import { JsonSchemaEx } from './json-schema-ex';
 
 /**
+ * Set options that controls how OpenAPI doc is generated
+ */
+export interface IBuildOptions {
+  /** Use modelName instead of generated name for models */
+  usePhysicalName?: boolean;
+}
+
+/**
  * {@link https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.RestApi.html | aws_apigateway.RestApi}
  * augmented with the features to build the OpenAPI definition.
  *
@@ -17,6 +25,9 @@ export interface IRestApiWithSpec extends apigateway.IRestApi {
 
   /** Adds a new model. */
   addModel(id: string, props: ModelOptionsWithSpec): apigateway.Model;
+
+  /** Set options that controls how OpenAPI doc is generated */
+  readonly buildOptions?: IBuildOptions;
 }
 
 /**
