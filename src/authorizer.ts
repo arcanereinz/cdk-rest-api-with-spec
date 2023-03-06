@@ -6,7 +6,7 @@ import { SecuritySchemeObject } from 'openapi3-ts';
  *
  * @beta
  */
-export interface IAuthorizerWithSpec extends apigateway.IAuthorizer {
+export interface IAuthorizerWithSpec extends apigateway.Authorizer {
   /** Security scheme object representing this authorizer. */
   securitySchemeObject?: SecuritySchemeObject;
 }

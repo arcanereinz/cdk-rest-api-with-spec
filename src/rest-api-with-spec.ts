@@ -307,10 +307,14 @@ class ResourceWithSpec {
       const authorizer = options?.authorizer;
       let security: OperationObject['security'] = undefined;
       if (authorizer?.securitySchemeObject != null) {
-        const authorizerId = resolveResourceId(
-          Stack.of(this.restApi),
-          authorizer.authorizerId,
-        );
+        const authorizerId =
+          this.restApi.buildOptions?.usePhysicalName &&
+          authorizer.securitySchemeObject.name
+            ? authorizer.securitySchemeObject.name
+            : resolveResourceId(
+                Stack.of(this.restApi),
+                authorizer.authorizerId,
+              );
         this.builder.addSecurityScheme(
           authorizerId,
           authorizer.securitySchemeObject,
