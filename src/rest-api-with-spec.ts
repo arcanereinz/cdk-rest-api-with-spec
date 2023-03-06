@@ -309,8 +309,13 @@ class ResourceWithSpec {
       if (authorizer?.securitySchemeObject != null) {
         const authorizerId =
           this.restApi.buildOptions?.usePhysicalName &&
-          authorizer.securitySchemeObject.name
-            ? authorizer.securitySchemeObject.name
+          (
+            authorizer as any as
+              | { authorizerProps?: { name?: string } }
+              | undefined
+          )?.authorizerProps?.name
+            ? (authorizer as any as { authorizerProps: { name: string } })
+                .authorizerProps.name
             : resolveResourceId(
                 Stack.of(this.restApi),
                 authorizer.authorizerId,
