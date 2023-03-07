@@ -11,6 +11,8 @@ import { JsonSchemaEx } from './json-schema-ex';
 export interface IBuildOptions {
   /** Use modelName instead of generated name for models */
   usePhysicalName?: boolean;
+  /** Do not include OPTIONS in openAPI output file */
+  noIncludeOptionsMethod?: boolean;
 }
 
 /**

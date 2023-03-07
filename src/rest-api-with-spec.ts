@@ -331,14 +331,20 @@ class ResourceWithSpec {
           },
         ];
       }
-      pathItem[httpMethod.toLowerCase()] = {
-        summary: options?.summary,
-        description: options?.description,
-        requestBody,
-        parameters,
-        responses,
-        security,
-      };
+      // do not include OPTIONS method if noIncludeOptionsMethod is true
+      if (
+        !this.restApi.buildOptions?.noIncludeOptionsMethod || // flag false
+        httpMethod.toLowerCase() !== 'options' // or not options
+      ) {
+        pathItem[httpMethod.toLowerCase()] = {
+          summary: options?.summary,
+          description: options?.description,
+          requestBody,
+          parameters,
+          responses,
+          security,
+        };
+      }
       return method;
     };
   }

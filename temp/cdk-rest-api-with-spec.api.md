@@ -15,13 +15,13 @@ import { ServerObject } from 'openapi3-ts';
 export function augmentAuthorizer(authorizer: aws_apigateway.IAuthorizer, securitySchemeObject: SecuritySchemeObject): IAuthorizerWithSpec;
 
 // @beta
-export interface IAuthorizerWithSpec extends aws_apigateway.IAuthorizer {
+export interface IAuthorizerWithSpec extends aws_apigateway.Authorizer {
     securitySchemeObject?: SecuritySchemeObject;
 }
 
 // @public
 export interface IBuildOptions {
-    // (undocumented)
+    noIncludeOptionsMethod?: boolean;
     usePhysicalName?: boolean;
 }
 

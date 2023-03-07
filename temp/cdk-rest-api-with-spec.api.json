@@ -254,8 +254,8 @@
             },
             {
               "kind": "Reference",
-              "text": "IAuthorizer",
-              "canonicalReference": "aws-cdk-lib!IAuthorizer:interface"
+              "text": "Authorizer",
+              "canonicalReference": "aws-cdk-lib!Authorizer:class"
             },
             {
               "kind": "Content",
@@ -318,8 +318,35 @@
           "members": [
             {
               "kind": "PropertySignature",
+              "canonicalReference": "cdk-rest-api-with-spec!IBuildOptions#noIncludeOptionsMethod:member",
+              "docComment": "/**\n * Do not include OPTIONS in openAPI output file\n */\n",
+              "excerptTokens": [
+                {
+                  "kind": "Content",
+                  "text": "noIncludeOptionsMethod?: "
+                },
+                {
+                  "kind": "Content",
+                  "text": "boolean"
+                },
+                {
+                  "kind": "Content",
+                  "text": ";"
+                }
+              ],
+              "isReadonly": false,
+              "isOptional": true,
+              "releaseTag": "Public",
+              "name": "noIncludeOptionsMethod",
+              "propertyTypeTokenRange": {
+                "startIndex": 1,
+                "endIndex": 2
+              }
+            },
+            {
+              "kind": "PropertySignature",
               "canonicalReference": "cdk-rest-api-with-spec!IBuildOptions#usePhysicalName:member",
-              "docComment": "",
+              "docComment": "/**\n * Use modelName instead of generated name for models\n */\n",
               "excerptTokens": [
                 {
                   "kind": "Content",
