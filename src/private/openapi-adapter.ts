@@ -119,7 +119,7 @@ export function jsonSchemaToSchemaObject(
     };
   }
   return {
-    addtionalProperties: mapAdditionalProperties(additionalProperties),
+    additionalProperties: mapAdditionalProperties(additionalProperties),
     allOf: allOf && allOf.map(jsonSchemaToSchemaObject),
     anyOf: anyOf && anyOf.map(jsonSchemaToSchemaObject),
     default: propDefault,
