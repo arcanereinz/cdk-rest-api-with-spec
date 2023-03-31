@@ -1,10 +1,13 @@
 import { aws_apigateway as apigateway, Stack } from 'aws-cdk-lib';
 import {
   ContentObject,
-  ReferenceObject,
   RequestBodyObject,
   ResponsesObject,
-  SchemaObject,
+  ReferenceObject,
+  ISpecificationExtension,
+  DiscriminatorObject,
+  XmlObject,
+  ExternalDocumentationObject,
 } from 'openapi3-ts';
 
 import { JsonSchemaEx } from '../json-schema-ex';
@@ -193,41 +196,28 @@ function mapProperties(
 
 function mapType(
   type?: apigateway.JsonSchemaType | apigateway.JsonSchemaType[] | undefined,
-):
-  | 'integer'
-  | 'number'
-  | 'string'
-  | 'boolean'
-  | 'object'
-  | 'null'
-  | 'array'
-  | undefined {
+): SchemaObjectType | SchemaObjectType[] | undefined {
   if (type == null) {
     return undefined;
   }
-  // treats JsonSchemaType[] as an 'array'
-  if (Array.isArray(apigateway.JsonSchemaType)) {
-    return 'array';
+
+  for (const oneType of Array.isArray(type) ? type : [type]) {
+    switch (oneType) {
+      case apigateway.JsonSchemaType.NULL:
+      case apigateway.JsonSchemaType.BOOLEAN:
+      case apigateway.JsonSchemaType.OBJECT:
+      case apigateway.JsonSchemaType.ARRAY:
+      case apigateway.JsonSchemaType.NUMBER:
+      case apigateway.JsonSchemaType.INTEGER:
+      case apigateway.JsonSchemaType.STRING:
+        break;
+      default:
+        // shoud not be here
+        throw new RangeError(`unknown JsonSchemaType: ${oneType}`);
+    }
   }
-  switch (type) {
-    case apigateway.JsonSchemaType.NULL:
-      return 'null';
-    case apigateway.JsonSchemaType.BOOLEAN:
-      return 'boolean';
-    case apigateway.JsonSchemaType.OBJECT:
-      return 'object';
-    case apigateway.JsonSchemaType.ARRAY:
-      return 'array';
-    case apigateway.JsonSchemaType.NUMBER:
-      return 'number';
-    case apigateway.JsonSchemaType.INTEGER:
-      return 'integer';
-    case apigateway.JsonSchemaType.STRING:
-      return 'string';
-    default:
-      // shoud not be here
-      throw new RangeError(`unknown JsonSchemaType: ${type}`);
-  }
+
+  return type;
 }
 
 /**
@@ -315,4 +305,64 @@ function modelMapToContentObject(
     }
   }
   return content;
+}
+
+type SchemaObjectType =
+  | 'integer'
+  | 'number'
+  | 'string'
+  | 'boolean'
+  | 'object'
+  | 'null'
+  | 'array';
+
+export interface SchemaObject extends ISpecificationExtension {
+  nullable?: boolean;
+  discriminator?: DiscriminatorObject;
+  readOnly?: boolean;
+  writeOnly?: boolean;
+  xml?: XmlObject;
+  externalDocs?: ExternalDocumentationObject;
+  example?: any;
+  examples?: any[];
+  deprecated?: boolean;
+  type?: SchemaObjectType | SchemaObjectType[];
+  format?:
+    | 'int32'
+    | 'int64'
+    | 'float'
+    | 'double'
+    | 'byte'
+    | 'binary'
+    | 'date'
+    | 'date-time'
+    | 'password'
+    | string;
+  allOf?: (SchemaObject | ReferenceObject)[];
+  oneOf?: (SchemaObject | ReferenceObject)[];
+  anyOf?: (SchemaObject | ReferenceObject)[];
+  not?: SchemaObject | ReferenceObject;
+  items?: SchemaObject | ReferenceObject;
+  properties?: {
+    [propertyName: string]: SchemaObject | ReferenceObject;
+  };
+  additionalProperties?: SchemaObject | ReferenceObject | boolean;
+  description?: string;
+  default?: any;
+  title?: string;
+  multipleOf?: number;
+  maximum?: number;
+  exclusiveMaximum?: boolean;
+  minimum?: number;
+  exclusiveMinimum?: boolean;
+  maxLength?: number;
+  minLength?: number;
+  pattern?: string;
+  maxItems?: number;
+  minItems?: number;
+  uniqueItems?: boolean;
+  maxProperties?: number;
+  minProperties?: number;
+  required?: string[];
+  enum?: any[];
 }

@@ -7,8 +7,8 @@ import {
   OpenApiBuilder,
   OperationObject,
   ParameterObject,
-  SchemaObject,
   ServerObject,
+  SchemaObject,
 } from 'openapi3-ts';
 
 import { translateJsonSchemaEx } from './json-schema-ex';
@@ -24,6 +24,7 @@ import {
   jsonSchemaToSchemaObject,
   methodResponsesToResponses,
   requestModelsToRequestBody,
+  SchemaObject as CustomSchemaObject,
 } from './private/openapi-adapter';
 import { resolveResourceId } from './private/utils';
 
@@ -138,7 +139,7 @@ export class RestApiWithSpec
         ? modelOptions.modelName
         : resolveResourceId(Stack.of(this), model.modelId);
     // registers the model as a schema component
-    this.builder.addSchema(modelId, schema);
+    this.builder.addSchema(modelId, schema as SchemaObject);
     return model;
   }
 
@@ -168,7 +169,7 @@ function translateModelOptionsWithSpec(
   options: ModelOptionsWithSpec,
 ): {
   modelOptions: apigateway.ModelOptions;
-  schema: SchemaObject;
+  schema: CustomSchemaObject;
 } {
   const { gatewaySchema, openapiSchema } = translateJsonSchemaEx(
     restApi,
