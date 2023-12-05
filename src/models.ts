@@ -184,6 +184,10 @@ export interface MethodOptionsWithSpec extends apigateway.MethodOptions {
    * definition.
    */
   methodResponses?: MethodResponseWithSpec[];
+  /**
+   * Group operations together with tags
+   */
+  tags?: string[];
 }
 
 /**

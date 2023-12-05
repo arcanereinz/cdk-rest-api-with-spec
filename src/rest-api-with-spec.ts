@@ -9,6 +9,8 @@ import {
   ParameterObject,
   ServerObject,
   SchemaObject,
+  TagObject,
+  PathItemObject,
 } from 'openapi3-ts';
 
 import { translateJsonSchemaEx } from './json-schema-ex';
@@ -64,6 +66,10 @@ export interface RestApiWithSpecProps extends apigateway.RestApiProps {
    */
   servers?: ServerObject[];
   /**
+   * Group API operations with tags
+   */
+  tags?: TagObject[];
+  /**
    * Controls how the OpenAPI doc is generated
    */
   buildOptions?: IBuildOptions;
@@ -116,6 +122,7 @@ export class RestApiWithSpec
         securitySchemes: {},
       },
       servers: props.servers,
+      tags: props.tags,
     });
     this.buildOptions = props.buildOptions;
     // augments and overrides `root`
@@ -296,7 +303,7 @@ class ResourceWithSpec {
       const { methodOptions, parameters } = translateRequestParameters(options);
       const method = this.resource.addMethod(httpMethod, target, methodOptions);
       const path = this.resource.path;
-      const pathItem = this.builder.rootDoc.paths[path];
+      const pathItem: PathItemObject = this.builder.rootDoc.paths[path];
       const requestBody =
         options?.requestModels != null
           ? requestModelsToRequestBody(this.restApi, options.requestModels)
@@ -338,13 +345,14 @@ class ResourceWithSpec {
         httpMethod.toLowerCase() !== 'options' // or not options
       ) {
         pathItem[httpMethod.toLowerCase()] = {
+          tags: options?.tags,
           summary: options?.summary,
           description: options?.description,
-          requestBody,
-          parameters,
-          responses,
-          security,
-        };
+          requestBody: requestBody,
+          parameters: parameters,
+          responses: responses!,
+          security: security,
+        } as OperationObject;
       }
       return method;
     };

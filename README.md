@@ -4,6 +4,76 @@ English / [日本語](./README.ja.md)
 
 Describe an [Amazon API Gateway (API Gateway)](https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html) REST API and the [OpenAPI](https://spec.openapis.org/oas/latest.html) definition at once with `cdk-rest-api-with-spec`.
 
+## What's new
+
+- OpenAPI 3.1 support for type as an array
+  ```ts
+  type: [string, integer];
+  ```
+- add build options that affects openapi json output
+  ```ts
+  const api = new RestApiWithSpec(this, 'example-api', {
+    buildOptions: {
+      // 1. Use modelName instead of generated name for models
+      usePhysicalName: true,
+      // 2. Do not include OPTIONS in openAPI output file
+      noIncludeOptionsMethod: true,
+    },
+    // ... other options
+  });
+  ```
+- add servers parameter to list servers
+  ```ts
+  const api = new RestApiWithSpec(this, 'example-api', {
+    servers: [
+      {
+        description: 'qa-stg-internal',
+        url: 'https://example.com/qa-stg',
+      },
+      {
+        description: 'prod-stg-internal',
+        url: 'https://example.com/prod-stg',
+      },
+    ],
+    // ... other options
+  });
+  ```
+- add tags to api gateway
+  ```ts
+  const api = new RestApiWithSpec(this, 'example-api', {
+    tags: [
+      {
+        name: pets
+        description: 'Everything about your Pets',
+        externalDocs: {
+          url: 'http://docs.my-api.com/pet-operations.htm',
+        }
+      },
+      {
+        name: store
+        description: 'Access to Petstore orders',
+        externalDocs: {
+          url: 'http://docs.my-api.com/store-orders.htm',
+        }
+      },
+    ],
+    // ... other options
+  });
+  ```
+- add tags support for openAPI 2/3
+  ```ts
+  api.root.addMethod(
+    'GET',
+    new apigateway.MockIntegration({
+      // ... integration settings
+    }),
+    {
+      tags: ['examples'],
+      // ... options settings
+    },
+  );
+  ```
+
 ## For whom is this library?
 
 This library could help you if you would like to write a REST API and the OpenAPI definition at once using the [AWS Cloud Development Kit (CDK)](https://docs.aws.amazon.com/cdk/v2/guide/home.html) building blocks.
@@ -25,6 +95,7 @@ npm install https://github.com/codemonger-io/cdk-rest-api-with-spec.git#v0.2.1
 ```
 
 This library is supposed to be used in a CDK v2 project, so it does not include the following modules in the `dependencies` but does in the `peerDependencies`.
+
 - [`aws-cdk-lib`](https://www.npmjs.com/package/aws-cdk-lib)
 - [`constructs`](https://www.npmjs.com/package/constructs)
 
@@ -54,6 +125,7 @@ You can also find a working example in the [`example`](./example) folder.
 
 Recently, I have been urged to write the OpenAPI definition of my REST API on API Gateway.
 As far as I know, there are two options to have the OpenAPI definition of a REST API on API Gateway.
+
 1. [Export the OpenAPI definition from an existing REST API](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-export-api.html)
 2. [Create a REST API by importing the OpenAPI definition](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-import-api.html)
 
@@ -102,7 +174,7 @@ api.root.addMethod(
         description: 'successful operation',
       },
     ],
-  }
+  },
 );
 ```
 
@@ -122,7 +194,8 @@ findByStatus.addMethod(
   }),
   {
     operationName: 'findPetsByStatus',
-    requestParameterSchemas: { // NEW!
+    requestParameterSchemas: {
+      // NEW!
       'method.request.querystring.status': {
         description: 'Status values that need to be considered for filter',
         required: false,
@@ -156,7 +229,7 @@ So the above [`requestParameterSchemas`](./api-docs/markdown/cdk-rest-api-with-s
       default: 'available',
     },
   },
-]
+];
 ```
 
 If you specify the [`requestParameterSchemas`](./api-docs/markdown/cdk-rest-api-with-spec.methodoptionswithspec.requestparameterschemas.md) property, you do not have to specify the [`requestParameters`](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.MethodOptions.html#requestparameters) property.
@@ -183,7 +256,7 @@ then you will get
       type: 'string',
     },
   },
-]
+];
 ```
 
 If the [`requestParameters`](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.MethodOptions.html#requestparameters) and [`requestParameterSchemas`](./api-docs/markdown/cdk-rest-api-with-spec.methodoptionswithspec.requestparameterschemas.md) properties are both specified, the [`requestParameterSchemas`](./api-docs/markdown/cdk-rest-api-with-spec.methodoptionswithspec.requestparameterschemas.md) property precedes.
@@ -291,16 +364,12 @@ You can augment an existing [aws_apigateway.IAuthorizer](https://docs.aws.amazon
 
 ```ts
 const authorizer = augmentAuthorizer(
-  new apigateway.TokenAuthorizer(
-    this,
-    'ExampleAuthorizer',
-    {
-      handler: new nodejs.NodejsFunction(this, 'authorizer', {
-        description: 'Example authorizer',
-        runtime: lambda.Runtime.NODEJS_16_X,
-      }),
-    },
-  ),
+  new apigateway.TokenAuthorizer(this, 'ExampleAuthorizer', {
+    handler: new nodejs.NodejsFunction(this, 'authorizer', {
+      description: 'Example authorizer',
+      runtime: lambda.Runtime.NODEJS_16_X,
+    }),
+  }),
   {
     type: 'apiKey',
     in: 'header',
@@ -330,6 +399,7 @@ npm run build
 ```
 
 You will find the following files created or updated in the `dist` folder,
+
 - `index.js`
 - `index.js.map`
 - `index.d.ts`
