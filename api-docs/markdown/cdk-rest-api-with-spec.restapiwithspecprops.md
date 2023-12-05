@@ -20,6 +20,8 @@ export interface RestApiWithSpecProps extends apigateway.RestApiProps
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [buildOptions?](./cdk-rest-api-with-spec.restapiwithspecprops.buildoptions.md) |  | [IBuildOptions](./cdk-rest-api-with-spec.ibuildoptions.md) | <b><i>(BETA)</i></b> <i>(Optional)</i> Controls how the OpenAPI doc is generated |
 |  [openApiInfo](./cdk-rest-api-with-spec.restapiwithspecprops.openapiinfo.md) |  | Partial&lt;InfoObject&gt; &amp; Pick&lt;InfoObject, 'version'&gt; | <b><i>(BETA)</i></b> Info object of the OpenAPI definition. |
 |  [openApiOutputPath](./cdk-rest-api-with-spec.restapiwithspecprops.openapioutputpath.md) |  | string | <b><i>(BETA)</i></b> Path to an output file where the OpenAPI definition is to be saved. |
+|  [servers?](./cdk-rest-api-with-spec.restapiwithspecprops.servers.md) |  | ServerObject\[\] | <b><i>(BETA)</i></b> <i>(Optional)</i> List of servers for use with swagger/openapi editor |
 

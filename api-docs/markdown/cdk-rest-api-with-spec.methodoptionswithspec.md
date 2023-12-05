@@ -29,4 +29,5 @@ export interface MethodOptionsWithSpec extends apigateway.MethodOptions
 |  [methodResponses?](./cdk-rest-api-with-spec.methodoptionswithspec.methodresponses.md) |  | [MethodResponseWithSpec](./cdk-rest-api-with-spec.methodresponsewithspec.md)<!-- -->\[\] | <b><i>(BETA)</i></b> <i>(Optional)</i> Method responses augmented with properties necessary for the OpenAPI definition. |
 |  [requestParameterSchemas?](./cdk-rest-api-with-spec.methodoptionswithspec.requestparameterschemas.md) |  | { \[key: string\]: BaseParameterObject; } | <b><i>(BETA)</i></b> <i>(Optional)</i> Request parameters which maps parameter objects for the OpenAPI definition instead of boolean values. |
 |  [summary?](./cdk-rest-api-with-spec.methodoptionswithspec.summary.md) |  | string | <b><i>(BETA)</i></b> <i>(Optional)</i> Summary of the method. |
+|  [tags?](./cdk-rest-api-with-spec.methodoptionswithspec.tags.md) |  | string\[\] | <b><i>(BETA)</i></b> <i>(Optional)</i> Group operations together with tags |
 

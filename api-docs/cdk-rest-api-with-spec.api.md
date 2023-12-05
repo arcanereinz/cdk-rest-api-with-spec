@@ -76,6 +76,7 @@ export interface MethodOptionsWithSpec extends aws_apigateway.MethodOptions {
         [key: string]: BaseParameterObject;
     };
     summary?: string;
+    tags?: string[];
 }
 
 // @beta

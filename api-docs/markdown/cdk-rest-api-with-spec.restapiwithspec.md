@@ -32,6 +32,7 @@ NOTE: Please turn on the validation of CDK stacks. If you skip the validation of
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [buildOptions?](./cdk-rest-api-with-spec.restapiwithspec.buildoptions.md) | <code>readonly</code> | [IBuildOptions](./cdk-rest-api-with-spec.ibuildoptions.md) | <b><i>(BETA)</i></b> <i>(Optional)</i> Set options that controls how OpenAPI doc is generated |
 |  [props](./cdk-rest-api-with-spec.restapiwithspec.props.md) | <code>readonly</code> | [RestApiWithSpecProps](./cdk-rest-api-with-spec.restapiwithspecprops.md) | <b><i>(BETA)</i></b> |
 |  [root](./cdk-rest-api-with-spec.restapiwithspec.root.md) | <code>readonly</code> | [IResourceWithSpec](./cdk-rest-api-with-spec.iresourcewithspec.md) | <b><i>(BETA)</i></b> Root resource with the OpenAPI definition. |
 
