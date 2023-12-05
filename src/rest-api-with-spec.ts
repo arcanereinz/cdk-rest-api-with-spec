@@ -338,6 +338,7 @@ class ResourceWithSpec {
         httpMethod.toLowerCase() !== 'options' // or not options
       ) {
         pathItem[httpMethod.toLowerCase()] = {
+          tags: options?.tags,
           summary: options?.summary,
           description: options?.description,
           requestBody,
