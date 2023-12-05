@@ -24,6 +24,7 @@ Describe the Amazon API Gateway and OpenAPI definition at once with CDK.
 |  Interface | Description |
 |  --- | --- |
 |  [IAuthorizerWithSpec](./cdk-rest-api-with-spec.iauthorizerwithspec.md) | <b><i>(BETA)</i></b> Authorizer augmented with the features to describe the OpenAPI definition. |
+|  [IBuildOptions](./cdk-rest-api-with-spec.ibuildoptions.md) | Set options that controls how OpenAPI doc is generated |
 |  [IResourceWithSpec](./cdk-rest-api-with-spec.iresourcewithspec.md) | <b><i>(BETA)</i></b> [aws\_apigateway.IResource](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.IResource.html) augmented with the features to build the OpenAPI definition. |
 |  [IRestApiWithSpec](./cdk-rest-api-with-spec.irestapiwithspec.md) | <b><i>(BETA)</i></b> [aws\_apigateway.RestApi](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.RestApi.html) augmented with the features to build the OpenAPI definition. |
 |  [JsonSchemaEx](./cdk-rest-api-with-spec.jsonschemaex.md) | <b><i>(BETA)</i></b> Extended [aws\_apigateway.JsonSchema](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-cdk-lib.aws_apigateway.JsonSchema.html)<!-- -->. |

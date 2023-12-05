@@ -20,6 +20,7 @@ export interface IRestApiWithSpec extends apigateway.IRestApi
 
 |  Property | Modifiers | Type | Description |
 |  --- | --- | --- | --- |
+|  [buildOptions?](./cdk-rest-api-with-spec.irestapiwithspec.buildoptions.md) | <code>readonly</code> | [IBuildOptions](./cdk-rest-api-with-spec.ibuildoptions.md) | <b><i>(BETA)</i></b> <i>(Optional)</i> Set options that controls how OpenAPI doc is generated |
 |  [root](./cdk-rest-api-with-spec.irestapiwithspec.root.md) | <code>readonly</code> | [IResourceWithSpec](./cdk-rest-api-with-spec.iresourcewithspec.md) | <b><i>(BETA)</i></b> Root resource ('/') with the features to build the OpenAPI definition. |
 
 ## Methods

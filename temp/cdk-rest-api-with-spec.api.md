@@ -10,6 +10,7 @@ import { Construct } from 'constructs';
 import { InfoObject } from 'openapi3-ts';
 import { SecuritySchemeObject } from 'openapi3-ts';
 import { ServerObject } from 'openapi3-ts';
+import { TagObject } from 'openapi3-ts';
 
 // @beta
 export function augmentAuthorizer(authorizer: aws_apigateway.IAuthorizer, securitySchemeObject: SecuritySchemeObject): IAuthorizerWithSpec;
@@ -76,6 +77,7 @@ export interface MethodOptionsWithSpec extends aws_apigateway.MethodOptions {
         [key: string]: BaseParameterObject;
     };
     summary?: string;
+    tags?: string[];
 }
 
 // @beta
@@ -123,6 +125,7 @@ export interface RestApiWithSpecProps extends aws_apigateway.RestApiProps {
     openApiInfo: Partial<InfoObject> & Pick<InfoObject, 'version'>;
     openApiOutputPath: string;
     servers?: ServerObject[];
+    tags?: TagObject[];
 }
 
 ```

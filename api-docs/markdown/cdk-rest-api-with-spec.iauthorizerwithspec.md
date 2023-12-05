@@ -12,9 +12,9 @@ Authorizer augmented with the features to describe the OpenAPI definition.
 <b>Signature:</b>
 
 ```typescript
-export interface IAuthorizerWithSpec extends apigateway.IAuthorizer 
+export interface IAuthorizerWithSpec extends apigateway.Authorizer 
 ```
-<b>Extends:</b> apigateway.IAuthorizer
+<b>Extends:</b> apigateway.Authorizer
 
 ## Properties
 
