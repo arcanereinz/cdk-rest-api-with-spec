@@ -344,7 +344,12 @@ class ResourceWithSpec {
         !this.restApi.buildOptions?.noIncludeOptionsMethod || // flag false
         httpMethod.toLowerCase() !== 'options' // or not options
       ) {
-        pathItem[httpMethod.toLowerCase()] = {
+        pathItem[
+          // convert method "any" to "x-amazon-apigateway-any-method"
+          httpMethod.toLowerCase() === 'any'
+            ? 'x-amazon-apigateway-any-method'
+            : httpMethod.toLowerCase()
+        ] = {
           tags: options?.tags,
           summary: options?.summary,
           description: options?.description,
